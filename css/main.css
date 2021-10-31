@@ -1,0 +1,564 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all .3s ease;
+}
+
+html,body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  min-width: 100vw;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-areas:
+    "aside messages"
+  ;
+}
+
+.container .aside,
+.container .messages {
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+.container .aside {
+  grid-area: aside;
+  width: 100%;
+  background: rgb(237, 237, 237);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 10% 10% 1fr;
+}
+
+.container .aside .header {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  padding: 0.625rem 1.5625rem;
+  max-height: 5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.container .aside .header .profile {
+  display: flex;
+  justify-content: flex-start;
+  align-self: center;
+}
+
+.container .aside .section-input {
+  display: flex;
+  padding: 0.625rem 1.5625rem;
+  background: rgb(246, 246, 246);
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  border-bottom: 1px solid rgb(231, 231, 231);
+}
+
+.container .aside.visibility-menu .header .btnmenu {
+  display: flex;
+  align-items: center;
+}
+
+.container .aside .header .btnmenu {
+  display: none;
+}
+
+.container .aside .header .profile,
+.container .aside .header .icons {
+  display: flex;
+}
+
+.container .aside .header .profile .profile-img {
+  width: 3.75rem;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.container .aside .header .icons {
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.5625rem;
+}
+
+.container .aside .header .icons i,
+.container .messages .header .icons i,
+.container .messages .send-message .icons,
+.container .messages .send-message .icon-audio i{
+  cursor: pointer;
+  margin: 0 1.25rem;
+  font-size: 1.25rem;
+  color: rgb(145, 145, 145);
+}
+
+.container .aside .header .icons i.active {
+  color: rgb(0, 0 ,0);
+}
+
+.container .aside .section-input .input-box {
+  width: 100%;
+  background: rgb(255, 255, 255);
+  height: 1.875rem;
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 0.625rem;
+}
+
+.container .aside .section-input .input-box .input,
+.container .aside .section-input .input-box i {
+  margin-left: 0.3125rem;
+}
+
+.container .aside .section-input .input-box .input {
+  width: 100%;
+  outline: none;
+  border: none;
+  margin-left: 0.625rem;
+  font-size: 0.9375rem;
+  text-overflow: ellipsis;
+}
+
+.container .aside .state {
+  width: 100%;
+  height: 100%;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgb(246, 246, 246);
+  padding-top: 0.625rem;
+}
+
+.container .aside .state > div {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(136, 136, 136);
+  transition: all 0s;
+  border-bottom: 5px solid rgb(246, 246, 246);
+  padding: 0.625rem;
+  padding-bottom: 1.25rem;
+}
+
+.container .aside .state > div:hover {
+  border-bottom: 5px solid rgb(13, 193, 67);
+}
+
+.container .aside .state > div.active {
+  color: rgb(70, 68, 68);
+  border-bottom: 5px solid rgb(13, 193, 67);
+}
+
+.container .aside .contacts {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container .aside .contacts .contact {
+  padding: 0.625rem 1.5625rem;
+  background: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(231, 231, 231);
+  display: flex;
+
+  align-items: center;
+  cursor: pointer;
+}
+
+.container .aside .contacts .contact:hover {
+  background: rgb(235, 235, 235);
+}
+
+.container .aside .contacts .contact.active {
+  background: rgb(235, 235, 235);
+}
+
+.container .aside .contacts .not {
+  text-align: center;
+  padding: 1.25rem;
+  display: none;
+  background: rgb(219, 63, 63);
+  color: rgb(255, 255, 255);
+}
+
+.container .aside .contacts .contact .profile img {
+  width: 4.375rem;
+  border-radius: 100%;
+}
+
+.container .aside .contacts .contact .info {
+  display: flex;
+  margin-left: 1.25rem;
+  width: 100%;
+}
+
+.container .aside .contacts .contact .info .text {
+  white-space: nowrap;
+  width: 80%;
+}
+
+.container .aside .contacts .contact .info .text .title-contact {
+  margin-bottom: 0.3125rem;
+  font-weight: bold;
+}
+
+.container .aside .contacts .contact .info .text .message {
+  color: rgb(136, 136, 136);
+  max-width: 9.375rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container .aside .contacts .contact .info .icons {
+  width: 20%;
+  display: flex;
+  justify-content: end;
+  
+  color: rgb(136, 136, 136);
+  position: relative;
+}
+
+.container .messages {
+  grid-area: messages;
+  width: 100%;
+  overflow: hidden;
+
+  position: relative;
+  z-index: 1000;
+  display: grid;
+  grid-template-rows: 10% auto 10%;
+}
+
+.container .messages .header {
+  background: rgb(237, 237, 237);
+  display: flex;
+  padding: 0.625rem 1.5625rem;
+  align-items: center;
+  border: 1px solid rgb(218, 218, 218);
+  width: 100%;
+  height: 100%;
+}
+
+.container .aside.visibility-menu .header .btnmenu {
+  margin-right: 1.25rem;
+  color: rgb(136, 136, 136);
+  cursor: pointer;
+}
+
+.container .messages .header #btn-menu,
+.container .aside.visibility-menu .header .btnmenu,
+.container .aside .header .btnmenu {
+  margin-right: 1.25rem;
+  color: rgb(136, 136, 136);
+  display: none;
+  cursor: pointer;
+}
+
+.container .messages .header .profile {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container .messages .header .profile .text {
+  cursor: pointer;
+}
+
+.container .messages .header .profile .text p {
+  color: rgb(136, 136, 136);
+  white-space: nowrap;
+}
+
+.container .messages .header .icons {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container .aside .header .profile .profile-img,
+.container .messages .header .profile .img {
+  max-width: 90%;
+}
+
+.container .messages .header .profile .img {
+  width: 3.75rem;
+  border-radius: 100%;
+  margin-right: 1.25rem;
+  cursor: pointer;
+}
+
+.container .messages .content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/chat.jpg');
+  background-repeat: repeat;
+  scroll-behavior: smooth;
+}
+
+.container .messages .content .messages-content {
+  padding: 3.125rem;
+}
+
+.container .messages .content .messages-content .message {
+  max-width: 100%;
+  display: flex;
+  margin: 0.625rem 0;
+}
+
+.container .messages .content .messages-content .message .message-content .ticks {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 0.625rem;
+  color: rgb(90, 198, 247);
+}
+
+.container .messages .content .messages-content .message.l {
+  justify-content: flex-start;
+}
+
+.container .messages .content .messages-content .message.r {
+  justify-content: flex-end;
+}
+
+.container .messages .content .messages-content .message.r .day {
+  right: 30px;
+}
+
+.container .messages .content .messages-content .message.rr .message-content {
+  background: rgb(255, 255, 255);
+}
+
+.container .messages .content .messages-content .message-content {
+  padding: 0.625rem;
+  position: relative;
+  border-radius: 0.625rem;
+  text-align: left;
+  background: rgb(220, 248, 198);
+  min-width: 9.375rem;
+  max-width: 80%;
+  word-wrap: break-word;
+  min-width: 14.375rem;
+}
+
+.container .messages .content .messages-content .message-content .text {
+  margin-right: 3.75rem;
+}
+
+.container .messages .content .messages-content .message-content .author {
+  margin-bottom: 0.625rem;
+  color: rgba(0, 0, 0, .6);
+  cursor: pointer;
+}
+
+.container .messages .content .messages-content .message-content .author:hover {
+  text-decoration: underline;
+}
+
+.container .messages .content .messages-content .message-content .day {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 0.75rem;
+}
+
+.container .messages .send-message {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  padding: 0.625rem;
+  background: rgb(240, 240, 240);
+
+  display: grid;
+  grid-template-areas:
+    "iconsL sendMessage iconsR"
+  ;
+
+  grid-template-columns: auto 1fr auto;
+}
+
+.container .messages .send-message .section-input {
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
+  border-radius: 3.125rem;
+  grid-area: sendMessage;
+}
+
+.container .messages .send-message .section-input .input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  font-size: 0.9375rem;
+}
+
+.container .messages .send-message .icons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1.25rem;
+}
+
+.container .messages .send-message .icons.l {
+  grid-area: iconsL;
+}
+
+.container .messages .send-message .icons.r {
+  grid-area: iconsR;
+}
+
+.container .messages .send-message .icons i {
+  font-size: 1.875rem;
+  margin: 0 10px;
+}
+
+.nomarginright {
+  margin-right: 0 !important;
+}
+
+.nomarginleft {
+  margin-left: 0 !important;
+}
+
+.not.active {
+  display: block !important;
+}
+
+.visibility-menu {
+  width: 100% !important;
+}
+
+.user-select-none {
+  user-select: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .container .aside .contacts .contact .info .text .title-contact {
+    font-size: 1.25rem;
+  }
+  .container .aside .contacts .contact .info .icons .day {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .container .aside .header .profile .profile-img,
+  .container .messages .header .profile .img {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
+
+  .container .aside .contacts .contact {
+    min-height: 5.9375rem;
+  }
+
+  .container .aside .contacts .contact .profile img {
+    width: 2.5rem;
+  }
+
+  .container .aside .header .icons i {
+    margin-right: 0.625rem;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .container {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "messages"
+    ;
+  }
+
+  .container .messages .header #btn-menu,
+  .container .aside.visibility-menu .header .btnmenu {
+    display: flex;
+  }
+
+  .container .aside {
+    position: absolute;
+    z-index: 2000;
+    width: 0;
+    grid-template-rows: 10% 10% auto 1fr;
+  }
+
+  .container .aside .header .btnmenu {
+    display: block;
+  }
+
+  .container .aside .state {
+    display: flex;
+  }
+
+  .container .aside .header .profile .profile-img {
+    display: none;
+  }
+
+  .container .aside .header .icons i.far.fa-circle,
+  .container .aside .header .icons i.far.fa-comment-alt {
+    display: none;
+  }
+
+  .container .messages .send-message .icons i {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container .messages .header .profile .img {
+    width: 1.875rem;
+  }
+
+
+  .container .messages .header .icons i {
+    font-size: 1rem;
+    margin-right: 0.3125rem;
+  }
+
+  .container .messages .header .profile .text {
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container .messages .send-message .icons #btn-send.far.fa-paper-plane,
+  .container .messages .send-message .icons i.far.fa-smile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .container .messages .content .messages-content {
+    padding: 1.25rem;
+  }
+}
